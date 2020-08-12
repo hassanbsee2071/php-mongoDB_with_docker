@@ -1,0 +1,13 @@
+FROM codecloud/docker-centos-apache-php7
+RUN yum update -y
+RUN yum install yum-utils -y
+RUN yum -y install epel-release
+RUN yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+RUN yum config-manager --enable remi-php72
+RUN yum update -y
+RUN yum install php72-php-fpm php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-xmlrpc php72-php-opcache -y 
+RUN yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo -y
+RUN yum install wget –y
+RUN wget https://pecl.php.net/get/mongodb-1.8.0.tgz
+RUN tar -xvzf mongodb-1.8.0.tgz
+

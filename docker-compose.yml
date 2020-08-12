@@ -1,0 +1,27 @@
+version: '2'
+
+
+
+
+services:
+  mongodb:
+        image: mongo:4.2.8
+        container_name: mongo_428
+        volumes:
+          - /root/DockerPHPTutorial/database_data:/data/db
+        restart: always
+        ports:
+          - "27017:27017"
+
+
+  management_system:
+    container_name: centos7_http_php72_img
+    image: hassan:centos7_http_php72_img
+    build:
+      context: ./
+    volumes:
+      - /root/DockerPHPTutorial/html:/var/www/html:rw
+    ports:
+      - 8080:80
+    depends_on:
+      - mongodb
